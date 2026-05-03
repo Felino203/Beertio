@@ -3,24 +3,28 @@ import Toybox.Lang;
 import Toybox.WatchUi;
 
 class BeertioApp extends Application.AppBase {
+    private var _model as CalorieModel?;
 
     function initialize() {
         AppBase.initialize();
     }
 
-    // onStart() is called on application start up
     function onStart(state as Dictionary?) as Void {
+        var itemId = AppSettings.getSelectedItemId();
+        var foodItem = FoodItemRegistry.getItem(itemId);
+        _model = new CalorieModel(foodItem);
     }
 
-    // onStop() is called when your application is exiting
     function onStop(state as Dictionary?) as Void {
     }
 
-    // Return the initial view of your application here
     function getInitialView() as [Views] or [Views, InputDelegates] {
-        return [ new BeertioView() ];
+        return [new BeertioView(_model as CalorieModel)];
     }
 
+    function getGlanceView() as [GlanceView] or [GlanceView, GlanceViewDelegate] or Null {
+        return [new BeertioGlanceView(_model as CalorieModel)];
+    }
 }
 
 function getApp() as BeertioApp {

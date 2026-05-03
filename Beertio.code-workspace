@@ -1,0 +1,59 @@
+{
+  "folders": [
+    {
+      "name": "Root",
+      "path": ".",
+    },
+    {
+      "name": "Beertio",
+      "path": "beertio",
+    },
+  ],
+  "settings": {
+    "editor.formatOnSave": true,
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+  },
+  "launch": {
+    "version": "0.2.0",
+    "configurations": [
+      {
+        "type": "monkeyc",
+        "request": "launch",
+        "name": "Run App",
+        "stopAtLaunch": false,
+        "device": "${command:GetTargetDevice}"
+      },
+      {
+        "type": "monkeyc",
+        "request": "launch",
+        "name": "Run App",
+        "stopAtLaunch": false,
+        "device": "${command:GetTargetDevice}",
+      },
+      {
+        "type": "monkeyc",
+        "request": "launch",
+        "name": "Run Tests",
+        "runTests": true,
+        "device": "${command:GetTargetDevice}",
+      },
+      {
+        "type": "monkeyc",
+        "request": "launch",
+        "name": "Run Complication Apps",
+        "stopAtLaunch": false,
+        "complicationSubscriberFolder": "${command:GetComplicationSubscriberFolder}",
+        "complicationPublisherFolder": "${command:GetComplicationPublisherFolder}",
+        "device": "${command:GetTargetDevice}",
+      },
+      {
+        "type": "monkeyc",
+        "request": "launch",
+        "name": "Run Native Pairing",
+        "runNativePairing": true,
+        "stopAtLaunch": false,
+        "device": "${command:GetTargetDevice}",
+      },
+    ],
+  },
+}
